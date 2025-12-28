@@ -39,7 +39,54 @@
 ### Step 12: 
   Stop
 # Program:
+#include <stdio.h>
+
+
+void swapByValue(int a, int b) {
+    int temp = a;
+    a = b;
+    b = temp;
+    printf("Inside swapByValue - a = %d, b = %d\n", a, b);
+}
+
+
+void swapByReference(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+    printf("Inside swapByReference - a = %d, b = %d\n", *a, *b);
+}
+
+int main() {
+    int x, y;
+
+
+    printf("Enter first number: ");
+    scanf("%d", &x);
+    printf("Enter second number: ");
+    scanf("%d", &y);
+
+    printf("\nBefore swapping: x = %d, y = %d\n", x, y);
+
+  
+    swapByValue(x, y);
+    printf("After swapByValue: x = %d, y = %d\n", x, y);
+
+    swapByReference(&x, &y);
+    printf("After swapByReference: x = %d, y = %d\n", x, y);
+
+    return 0;
+}
+
 # Output:
+Enter first number: 10
+Enter second number: 20
+Before swapping: x = 10, y = 20
+Inside swapByValue - a = 20, b = 10
+After swapByValue: x = 10, y = 20
+Inside swapByReference - a = 20, b = 10
+After swapByReference: x = 20, y = 10
+
 # Result: 
   Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -77,7 +124,43 @@
 ### Step 10:
   Stop
 # Program:
+#include <stdio.h>
+
+
+int fibonacci(int n) {
+    if (n == 0) 
+        return 0;
+    else if (n == 1) 
+        return 1;
+    else
+        return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main() {
+    int n;
+
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+
+    if (n <= 0) {
+        printf("Please enter a positive integer.\n");
+        return 1;
+    }
+
+    printf("Fibonacci series (%d terms): ", n);
+
+    for (int i = 0; i < n; i++) {
+        printf("%d ", fibonacci(i));
+    }
+
+    printf("\n");
+    return 0;
+}
+
 # Output:
+Enter the number of terms: 8
+Fibonacci series (8 terms): 0 1 1 2 3 5 8 13
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -119,7 +202,54 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 12:
   Stop
 # Program:
+#include <stdio.h>
+
+
+void printSequence(int current, int upper) {
+    if (current > upper)
+        return;
+
+    printf("%d ", current);
+
+    
+    printSequence(current + 2, upper);
+}
+
+int main() {
+    int lower, upper;
+
+    printf("Enter the lower limit: ");
+    scanf("%d", &lower);
+    printf("Enter the upper limit: ");
+    scanf("%d", &upper);
+
+    if (lower > upper) {
+        printf("Lower limit should be less than or equal to upper limit.\n");
+        return 1;
+    }
+
+   
+    if (lower % 2 != 0) {
+        printf("Odd sequence from %d to %d: ", lower, upper);
+    } else {
+        printf("Even sequence from %d to %d: ", lower, upper);
+    }
+
+   
+    printSequence(lower, upper);
+
+    printf("\n");
+    return 0;
+}
+
 # Output:
+Enter the lower limit: 2
+Enter the upper limit: 10
+Even sequence from 2 to 10: 2 4 6 8 10
+Enter the lower limit: 3
+Enter the upper limit: 11
+Odd sequence from 3 to 11: 3 5 7 9 11
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -161,7 +291,51 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 11:
   Stop
 # Program:
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int n, i, sum = 0;
+    int *arr;
+
+ 
+    printf("Enter the number of integers: ");
+    scanf("%d", &n);
+
+    if (n <= 0) {
+        printf("Number of integers must be positive.\n");
+        return 1;
+    }
+
+  
+    arr = (int *)calloc(n, sizeof(int));
+    if (arr == NULL) {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+
+    
+    printf("Enter %d integers:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+        sum += arr[i];
+    }
+
+   
+    printf("Sum of the entered integers = %d\n", sum);
+
+   
+    free(arr);
+
+    return 0;
+}
+
 # Output:
+Enter the number of integers: 5
+Enter 5 integers:
+10 20 30 40 50
+Sum of the entered integers = 150
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -197,6 +371,46 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 10:
   Stop
 # Program:
+#include <stdio.h>
+
+
+void displayArray(int arr[], int n) {
+    printf("Array elements are: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int n;
+
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    if (n <= 0) {
+        printf("Number of elements must be positive.\n");
+        return 1;
+    }
+
+    int arr[n];
+
+    printf("Enter %d integers:\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+ 
+    displayArray(arr, n);
+
+    return 0;
+}
+
 # Output:
+Enter the number of elements: 5
+Enter 5 integers:
+10 20 30 40 50
+Array elements are: 10 20 30 40 50
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
